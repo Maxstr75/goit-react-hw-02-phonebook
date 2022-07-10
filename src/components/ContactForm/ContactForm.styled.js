@@ -4,7 +4,7 @@ export const Form = styled.form`
   max-width: 360px;
   border-radius: 5px;
   padding: 10px;
-  background-color: #68829e;
+  background-color: tomato;
 `;
 
 export const Label = styled.label`
