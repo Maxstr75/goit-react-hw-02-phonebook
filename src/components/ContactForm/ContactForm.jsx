@@ -5,6 +5,7 @@ import { Form, Label, Input, Button } from './ContactForm.styled';
 export class ContactForm extends React.Component {
   state = {
     name: '',
+    number: '',
   };
 
   handleChange = event => {
@@ -19,7 +20,7 @@ export class ContactForm extends React.Component {
   };
 
   reset = () => {
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
 
   static propTypes = {
@@ -27,7 +28,7 @@ export class ContactForm extends React.Component {
   };
 
   render() {
-    const { name } = this.state;
+    const { name, number } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Label htmlFor={this.nameId}>
@@ -43,6 +44,18 @@ export class ContactForm extends React.Component {
           />
         </Label>
 
+        <Label htmlFor={this.numberId}>
+          Number
+          <Input
+            type="tel"
+            name="number"
+            value={number}
+            onChange={this.handleChange}
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+          />
+        </Label>
         <Button type="submit">Add contact</Button>
       </Form>
     );
